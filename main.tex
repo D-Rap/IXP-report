@@ -34,7 +34,8 @@
 \date{}
 
 \author{
-		Dharapa Pattanakul (dp16812) \\ 
+        \textit{Student}: Dharapa Pattanakul\\ 
+        \textit{Supervisor}: Branislav Titurus\\
 		Universoty of Bristol \\
 		Department of Aerospace Engineering }
 %\fi
@@ -44,10 +45,10 @@
 \tableofcontents
 \newpage
 %%%%%%%%%% Executive Summary %%%%%%%%%
-\section{Executive Summary}
+\section{Executive Summary - (1 page)}
 
 %%%%%%%%%% Problem Definition %%%%%%%%%%
-\section{Problem Definition}
+\section{Problem Definition - (1 page)}
 \begin{itemize}
     \item Parameters study on High AR wings to observe flutter and divergence
     \item The need for High AR - environmentally friendly
@@ -59,36 +60,106 @@
     \item Results
 \end{itemize}
 
+\subsection{Scope} 
+There is a strive for greener innovations that can be seen across the aviation industry. These ideas attempt to maximise flight efficiency while minimises environmental impact. One way to acheive this is by increasing wings' aspect-ratio (AR). This provides a higher lift-to-drag ratio and a longer range. However, this has not yet been widely adapted into commercial jets due to a few limiting factor. One of the factor the flexibility of high AR wings. Large deformation results in aeroelastic behaviour on the wing.\\ \\
+The reason given above has attracted many attention to the study of aeroelasticity. Several computational and experimental study have been done on the aeroelastic response of unmanned aerial vehicles(UAV) over the past few decades, but only a few on commercial aircraft. This project will seek to develop a better understanding on effects of wings aspect ratio on the aeroelastic response on different types of aircraft ranging from UAVs to commercial aircraft. The nonlinear method was chosen for the better understanding of the coupling between structural deformation and aeroelastic response. 
+
+\newpage
 %%%%%%%%%% Background %%%%%%%%%%
-\section{Background}
+\section{Background - (6 page)}
 \begin{itemize}
-    \item Aeroelasticity
-    \item Structure
-    \item Aerodynamics
-    \item Inertia
-    \item Flutter
+    \item Aeroelasticity - Cooper
+    \begin{itemize}
+        \item Structure
+        \item Aerodynamics
+        \item Inertia
+    \end{itemize}
+    \item Flutter - mohemmed
     \item Divergence
+    \item High AR and nonlinearities
 \end{itemize}
+\subsection{Aeroelasticity}
+Aeroelastic phenomena occurs when there is an interaction between structures and aerodynamics force in a model. This is predominant in a structure of high flexibility such as a high aspect-ratio (AR) wing. This means the aircraft with such property are more sensitive to flutter and divergence. Failure to predict the occurrence of these phenomenons can results in an aircraft losing its control, failing air worthiness regulations and a fatal structural damage.\\
+
+%------ wrapped figure of triangle -----
+\begin{wrapfigure}{r}{6.5cm}
+    \includegraphics[width=6.5cm]{figures/aeroelas_triangle.png}
+    \caption{Aeroelastic Triangle}
+    \label{aero-tri}
+\end{wrapfigure} 
+%----------------------------------------
+
+This study will investigate the affects of torsional stiffness and bending stiffness on the occurrence of flutter and divergence in a high AR wing. The study involves the three main forces that contribute to aeroelasticity: aerodynamic, elastic and inertia (as shown in figure \ref{aero-tri}).\\
+
+High AR wing are more flexible. This means elastic deformation is due to happen at large as the aircraft travels at higher speed. The need to understand aeroelastic phenomena in a high AR wing aircraft travelling near the transonic region was mentioned by Afonso et al \cite{Afonso2017AWings} for future development of high AR wing commercial jets.
+
+\subsubsection{Inertia}
+
+\subsubsection{Aerodynamics}
+The aerodynamic model implemented here is the simplified unsteady aerodynamic model.
+\begin{align}
+L &= \rho V^2 \Big{(}L_z z + L_{\dot z}\frac{b\dot z}{V}+L_{\theta}b\theta + L_{\dot \theta}\frac{b^2 \dot \theta}{V}\Big{)} \\
+M &= \rho V^2 \Big{(} M_z bz + M_{\dot z} \frac{b^2 \dot z}{V} + M_{\theta} b^2 \theta + M_{\dot \theta} \frac{b^3 \dot \theta}{V} \Big{)}
+\end{align}
+
+\subsubsection{Structure}
+
+\subsection{Flutter}
+
+Flutter is the most important dynamic flutter phenomena\cite{MohammedFREEWINGS}. It occurs when an aircraft loses its stability due to an extraction of energy from the air stream by the aircraft structure. Resulting in an oscillatory motion that does not decay and increases in magnitude over time. This phenomenon is undesirable as it damages the aircraft structure and wear out its life cycle.\\
+
+Flutter boundary is defined as  the lowest speed at which a small perturbation to a static equilibrium results in flutter. Lowest airspeed at which the system has a complex conjugate pair of eigenvalues with zero real part. 
+
+\subsection{Literature Review}
+Afonso et al\cite{Afonso2017AWings} reviewed the importance of nonlinear model in aeroelasticity. The need for more computational and experimental study was mentioned as the existing reduced order model gets more complicte as nonlinearity inceases. The lack of information concerning values for modal amplitudes in simulations was also recognised.\\
+
+In another study, Afonso et al \cite{Afonso2015LINEARWINGS} investigated the different analytical method using linear and nonlinear model. The differences between linear and nonlinear solutions grew more noticeable as the wing aspect-ratio increases. This was concluded to be a result of the reduction in wing mass, torsional stiffness and bending stiffness - the wing became more flexible. Afonso pointed out that a development of a nonlinear modelling to study the aeroelastic bahaviour is crucial for high-aspect-ratio wings.\\
+
+Eaton et al \cite{EatonNumericalWings} explored a method that considered non-linearity, reduced-order beam model, linear quasi-steady strip theory aerodynamics and two-parameter bifurcation. This method was recommended for a study of limit-cycle-oscillations (LCO).\\
+%The importance of the study of nonlinear aeroelasticity was also mentioned as more strives towards higher aspect ratio wing can be seen across the industry.\\
+
+All of these studies established that nonlinear modelling is essential, Ritter, Teixeira and Cesnic's study compared different nonlinear aeroelastic methods for manoeuvre simulation of very flexible aircraft \cite{Ritter2018ComparisonAircraft}.\\
+
+These studies mentioned above were focused on nonlinear study of the aeroelastic behaviour in high AR wings. However, the development of this model requires time and a better understanding of the field. It was decided that for the preliminary study at this lever, the linear model will be implemented and observed. The model developed in this project will be modified and improved into a nonlinear model in the Final Year Project.\\
+
+The linear model used in this project was based on Jan R. Wright and Jonathan E. Cooper - Introduction to Aircraft Aeroelasticity and Loads \cite{Wright2015INTRODUCTIONLOADS}. 
+
 
 %%%%%%%%%% Aim and Objectives %%%%%%%%%%
-\section{Aim and Objectives}
+\section{Aim and Objectives - (1/2 page)}
 \begin{itemize}
-    \item 
+    \item Develop a computational method to study flutter and divergence behaviour.
+    \item The aim is to use linear method for IXP to perform a preliminary parameter study.
+    \item Develop into a nonlinear tool for FYP for a better study.
 \end{itemize}
 
 %%%%%%%%%% Technical/Scientific Methodology %%%%%%%%%%
-\section{Methodology}
+\section{Methodology - (1-2 page)}
+\begin{itemize}
+    \item Computational and analytical method
+    \item From existing code
+    \item New one
+    \item Different models
+    \item Compare to existing experimental results
+\end{itemize}
 
 %%%%%%%%%% Preliminary Studies %%%%%%%%%%
-\section{Preliminary Studies}
+\section{Preliminary Studies - (3 page)}
 
 %%%%%%%%%% Initial Conclusions and Risk Management %%%%%%%%%%
-\section{Initial Conclusions and Risk Management}
+\section{Initial Conclusions and Risk Management - (1/2 page)}
 
 %%%%%%%%%% Future Work %%%%%%%%%%
-\section{Future Work}
+\section{Future Work - (1/2 page)}
 
 %%%%%%%%%% Project Work plan %%%%%%%%%%
 \section{Work Plan}
+
+%%%%%%%%%% Reference %%%%%%%%%%
+\section*{Reference}
+\bibliography{references.bib}
+
+%%%%%%%%%% Appendices %%%%%%%%%%
+\section*{Appendix}
 
 \end{document}
