@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[11pt]{article}
 \usepackage{mypackage}
 
 %%%%%%%%%%%%%%%%% Group Study Heading %%%%%%%%%%%%%%%%
@@ -41,13 +41,29 @@
 %\fi
 
 \maketitle
+%----------- table of contents ----------%
 \newpage
 \tableofcontents
 \newpage
+\listoffigures
+\addcontentsline{toc}{section}{\numberline\ {}List of figures}
+\cleardoublepage
+%List of tables
+\listoftables
+\addcontentsline{toc}{section}{\numberline\ {}List of tables}
+\cleardoublepage
+\newpage
+\section*{Nomenclatures}
+\cleardoublepage
+%----------------------------------------%
+
 %%%%%%%%%% Executive Summary %%%%%%%%%
+\newpage
 \section{Executive Summary - (1 page)}
+\cleardoublepage
 
 %%%%%%%%%% Problem Definition %%%%%%%%%%
+\newpage
 \section{Problem Definition - (1 page)}
 \begin{itemize}
     \item Parameters study on High AR wings to observe flutter and divergence
@@ -82,14 +98,14 @@ The reason given above has attracted many attention to the study of aeroelastici
 Aeroelastic phenomena occurs when there is an interaction between structures and aerodynamics force in a model. This is predominant in a structure of high flexibility such as a high aspect-ratio (AR) wing. This means the aircraft with such property are more sensitive to flutter and divergence. Failure to predict the occurrence of these phenomenons can results in an aircraft losing its control, failing air worthiness regulations and a fatal structural damage.\\
 
 %------ wrapped figure of triangle -----
-\begin{wrapfigure}{r}{6.5cm}
-    \includegraphics[width=6.5cm]{figures/aeroelas_triangle.png}
-    \caption{Aeroelastic Triangle}
-    \label{aero-tri}
+\begin{wrapfigure}{r}{8.5cm}
+    \includegraphics[width=8.5cm]{figures/aeroelas_triangle.png}
+    \caption{Aeroelastic triangle}
+    \label{fig:aero-tri}
 \end{wrapfigure} 
 %----------------------------------------
 
-This study will investigate the affects of torsional stiffness and bending stiffness on the occurrence of flutter and divergence in a high AR wing. The study involves the three main forces that contribute to aeroelasticity: aerodynamic, elastic and inertia (as shown in figure \ref{aero-tri}).\\
+This study will investigate the affects of torsional stiffness and bending stiffness on the occurrence of flutter and divergence in a high AR wing. The study involves the three main forces that contribute to aeroelasticity: aerodynamic, elastic and inertia (as shown in figure \ref{fig:aero-tri}).\\
 
 High AR wing are more flexible. This means elastic deformation is due to happen at large as the aircraft travels at higher speed. The need to understand aeroelastic phenomena in a high AR wing aircraft travelling near the transonic region was mentioned by Afonso et al \cite{Afonso2017AWings} for future development of high AR wing commercial jets.
 
@@ -104,12 +120,51 @@ M &= \rho V^2 \Big{(} M_z bz + M_{\dot z} \frac{b^2 \dot z}{V} + M_{\theta} b^2 
 
 \subsubsection{Structure}
 
-\subsection{Flutter}
+\subsection{Aeroelastic phenomena}
+Aeroelastic phenomena can be categorised into two categories: dynamic and static.
 
+%Static  aeroelastic  phenomena involves  the  study  of  the  deformation  of  the  aircraft  and  how  this influences  the  distribution  of  lift.  This  con sequently  causes  torsional  divergence  reducing  the effectiveness of the control surface. Static aeroelasticity is also no affected by mass properties of the  aircraft  and  is  not  influenced  by  oscillations.  Dynamic  aeroelastic  phenomena  involves the analysis of  flutter of the  aircraft which disturbs the stability of the aircraft and the air stream is subjected to extraction of energy from the aircraft structure. 
+
+\subsubsection{Flutter}
 Flutter is the most important dynamic flutter phenomena\cite{MohammedFREEWINGS}. It occurs when an aircraft loses its stability due to an extraction of energy from the air stream by the aircraft structure. Resulting in an oscillatory motion that does not decay and increases in magnitude over time. This phenomenon is undesirable as it damages the aircraft structure and wear out its life cycle.\\
 
 Flutter boundary is defined as  the lowest speed at which a small perturbation to a static equilibrium results in flutter. Lowest airspeed at which the system has a complex conjugate pair of eigenvalues with zero real part. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = .8\textwidth]{figures/torsion-bending-modes.png}
+    \caption{Wing response to aerodynamic force in torsion and bending mode.}
+    \label{fig:binary}
+\end{figure}
 
+\subsubsection{Divergence}
+Divergence is a static instability of a lifting surface of an aircraft. When the wing exceeds its torsional divergence speed, the torsional moment from aerodynamic force due to twist overcomes the structural elastic restoring moment. This causes the wing to become statically unstable\cite{RaymondL.Bisplinghoff2002PrinciplesAeroelasticity}. As the time-dependent can be neglected in the case of static phenomena, the inertia force can be neglected. \\
+%------ wrapped figure of heave and pitch -----
+\begin{wrapfigure}{l}{8.5cm}
+    \includegraphics[width=8.5cm]{figures/two-dimensional-wing-torsional-spring.png}
+    \caption{Two dimensional wing with a torsional spring.}
+    \label{fig:torsional-spring}
+\end{wrapfigure} 
+%----------------------------------------
+In a wing that is not stiff enough, divergence will cause the wing to twist off \cite{2011AeroelasticityFlutter}. Stiffness is much more important that strength in this case. In modern aircraft, flutter speed is usually lower than divergence speed; flutter usually occurs before divergence. However, this does not render divergence speed analysis to be obsolete as it is a good indication of the general stiffness of the aircraft structure and must be considered as part of the certification process \cite{Wright2015INTRODUCTIONLOADS}.\\ \\
+
+Figure \ref{fig:torsional-spring} illustrates the torsional elastic moment($M_E$) versus the aerodynamic moment($M_{ac}$) and moment due to lift($ec.L$). Each term in the equilibrium can be expressed as:
+\begin{eqnarray*}
+ec.L = ec.qSC_{L,{\theta _0}}(\theta _0 + \theta),\hspace{1cm} M_{ac} = qScC_{M_{ac}},\hspace{1cm} M_E = K_{\theta}\theta
+\end{eqnarray*}
+
+%\begin{align*}
+%\text{Lift:}\hspace{2cm} L &= qSC_{L,{\theta _0}}(\theta _0 + \theta)\\
+%\text{Aero moment:}\hspace{1.6cm}M_{ac} &= qScC_{M_{ac}}\\
+%\text{Elastic moment:}\hspace{1.65cm}M_E &= K_{\theta}\theta
+%\end{align*}
+
+\begin{equation}
+qScC_{M_{ac}} + ec. qSC_{L,{\theta _0}}(\theta _0 + \theta) = K_{\theta}\theta
+\end{equation}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% LITERATURE REVIEW %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Literature Review}
 Afonso et al\cite{Afonso2017AWings} reviewed the importance of nonlinear model in aeroelasticity. The need for more computational and experimental study was mentioned as the existing reduced order model gets more complicte as nonlinearity inceases. The lack of information concerning values for modal amplitudes in simulations was also recognised.\\
 
@@ -156,7 +211,6 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
 \section{Work Plan}
 
 %%%%%%%%%% Reference %%%%%%%%%%
-\section*{Reference}
 \bibliography{references.bib}
 
 %%%%%%%%%% Appendices %%%%%%%%%%
