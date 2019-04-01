@@ -83,6 +83,7 @@ The reason given above has attracted many attention to the study of aeroelastici
 \newpage
 %%%%%%%%%% Background %%%%%%%%%%
 \section{Background - (6 page)}
+\iffalse
 \begin{itemize}
     \item Aeroelasticity - Cooper
     \begin{itemize}
@@ -94,6 +95,7 @@ The reason given above has attracted many attention to the study of aeroelastici
     \item Divergence
     \item High AR and nonlinearities
 \end{itemize}
+\fi
 \subsection{Aeroelasticity}
 Aeroelastic phenomena occurs when there is an interaction between structures and aerodynamics force in a model. This is predominant in a structure of high flexibility such as a high aspect-ratio (AR) wing. This means the aircraft with such property are more sensitive to flutter and divergence. Failure to predict the occurrence of these phenomenons can results in an aircraft losing its control, failing air worthiness regulations and a fatal structural damage.\\
 
@@ -110,23 +112,83 @@ This study will investigate the affects of torsional stiffness and bending stiff
 High AR wing are more flexible. This means elastic deformation is due to happen at large as the aircraft travels at higher speed. The need to understand aeroelastic phenomena in a high AR wing aircraft travelling near the transonic region was mentioned by Afonso et al \cite{Afonso2017AWings} for future development of high AR wing commercial jets.
 
 \subsubsection{Inertia}
+The inertia matrix can be represented as 
+\begin{gather*}
+    \begin{bmatrix}A_{bb} & A_{bt} \\ A_{tb} & A_{tt} \end{bmatrix}
+\end{gather*}
+However, as there is no inertia coupling in the model, $A_{bt} = A_{tb} = 0$ where $b$ represetns bending and $t$ represents torsion mode. This allows the bending stiffness ($EI$) and the torsional stiffness ($GJ$) to be represented in term of the torsion and bending natural frequencies as
+\begin{equation}
+    \omega_b = \sqrt{\frac{4EI}{A_{bb}s^3}} \text{ and } \omega_t = \sqrt{\frac{GJ}{A_{tt}s}}
+\end{equation}
 
 \subsubsection{Aerodynamics}
-The aerodynamic model implemented here is the simplified unsteady aerodynamic model.
+The aerodynamic model implemented here is a strip theory aerodynamics with additional simplified unsteady aerodynamic terms. This model includes the frequency dependent effect on lift and pitching moment which is essential for flutter analysis. The simplified expressions for lift increments ($dL$) and nose up pitching moment ($dM$) as a result of generalised unsteady aerodynamic forces applied with the strip theory are 
+\begin{align}
+dL &= \frac{1}{2}\rho V^2ca_w\Big( \frac{y^2\dot{q_1}}{s^2V}+\frac{y}{s}q_2\Big)dy\\
+dM &= \frac{1}{2}\rho V^2 c^2\Big[ea_w\Big(\frac{y^2\dot{q_1}}{s^2V}+\frac{y}{s}q_2\Big)+M_{\dot{\theta}}c\frac{(y\dot{q_2})}{4sV}\Big]dy
+%\label{eq:unsteady-aero-moment}
+\end{align}
+\iffalse
 \begin{align}
 L &= \rho V^2 \Big{(}L_z z + L_{\dot z}\frac{b\dot z}{V}+L_{\theta}b\theta + L_{\dot \theta}\frac{b^2 \dot \theta}{V}\Big{)} \\
 M &= \rho V^2 \Big{(} M_z bz + M_{\dot z} \frac{b^2 \dot z}{V} + M_{\theta} b^2 \theta + M_{\dot \theta} \frac{b^3 \dot \theta}{V} \Big{)}
 \end{align}
+\fi
+
+The change in lift due to a change in angle of incidence as modelled using an unsteady aerodynamic model can be illustrated by the Wagner Function (figure \ref{fig:wagner}). The function shows that lift takes time to build up as the  airflow travels across the semi-chord of the lifting surface. The quasi-steady model assumes a sharp step change in lift as it does not include time-effect; assumes instantaneous. This can results in a substantial aeroelastic modelling errors \cite{Wright2015INTRODUCTIONLOADS}. The pitch damping term $M_{\dot{\theta}}$ is included in equation (2) to include the time delay effect. This property is negative and will be treated as a constant in this 'simplified' model.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .7\textwidth]{figures/wagner.png}
+    \caption{Change in lift due to change in angle of incidence.}
+    \label{fig:wagner}
+\end{figure}
+
 
 \subsubsection{Structure}
+The structural model used in this analysis is the binary wing aeroelastic model. This implies that the wing is a flexible rectangular, unswept, cantilever wing with one bending and one torsion assumed shape (as shown in figure \ref{fig:free-free}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .6\textwidth]{figures/free-free-mode-shape.png}
+    \caption{Full aircraft 'Free-Free' assumed mode shapes}
+    \label{fig:free-free}
+\end{figure}
+The kinetic energy due to the dynamic motion in bending and torsion can be written as
+\begin{equation}
+    T = \frac{m}{2}\int_0^s \int_0^c \Big( \Big{(} \frac{y}{s}\Big{)}^2\dot{q_1}+\Big{(}\frac{y}{s}\Big{)}(x-x_f)\dot{q_2}\Big{)}^2dxdy
+\end{equation}
+The elastic potential energy corresponds to the strain energy in bending and torsion can be represented as
+\begin{equation}
+    U = \frac{1}{2}\int_0^s EI \Big{(}\frac{2q_1}{s^2}\Big{)}^2dy+\frac{1}{2}\int_0^sGJ\Big{(}\frac{q_2}{s}\Big{)}^2dy
+\end{equation}
+
+Where $q_1$ and $q_2$ are generalised coordinates corresponding to the simple assumed shapes $\psi_1$ and $\psi_2$ as shown in figure \ref{fig:free-free}. Uniformed distribution of mass is assumed here. 
+
 
 \subsection{Aeroelastic phenomena}
 Aeroelastic phenomena can be categorised into two categories: dynamic and static.
 
+\iffalse
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/EQ.png}
+    %\caption{Full Aeroelastic Equation}
+    \label{fig:aero-eq}
+\end{figure}
+\fi
+
+\textbf{Apply Lagrange to get this}
+
+\begin{gather}
+\begin{split}
+    m\begin{bmatrix} \frac{s^5c}{5} & \frac{s^4}{4}\Big{(}\frac{c^2}{2}-cx_f\Big{)} \\ \frac{s^4}{4}\Big{(}\frac{c^2}{2}-cx_f\Big{)} & \frac{s^3}{3}\Big{(}\frac{c^3}{3}-c^2x_f+cx_f^2\Big{)} \end{bmatrix} \begin{bmatrix}\ddot{q_1}\\ \ddot{q_2} \end{bmatrix} + \rho V \begin{bmatrix} \frac{ca_w s^5}{10} & 0 \\ -\frac{c^2e a_w s^4}{8} & -\frac{c^3M_{\dot\theta}s^3}{24} \end{bmatrix}\begin{bmatrix}\dot{q_1}\\ \dot{q_2}\end{bmatrix} +\\ \Bigg{\{}\rho V^2  \begin{bmatrix} 0 & \frac{ca_ws^4}{8} \\ 0 & -\frac{c^2ea_ws^3}{6} \end{bmatrix} + \begin{bmatrix} 4EIs & 0 \\ 0 & GJs \end{bmatrix} \Bigg{\}}\begin{bmatrix} q_1 \\ q_2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+\end{split}
+\end{gather}
+
 %Static  aeroelastic  phenomena involves  the  study  of  the  deformation  of  the  aircraft  and  how  this influences  the  distribution  of  lift.  This  con sequently  causes  torsional  divergence  reducing  the effectiveness of the control surface. Static aeroelasticity is also no affected by mass properties of the  aircraft  and  is  not  influenced  by  oscillations.  Dynamic  aeroelastic  phenomena  involves the analysis of  flutter of the  aircraft which disturbs the stability of the aircraft and the air stream is subjected to extraction of energy from the aircraft structure. 
 
 \subsubsection{Flutter}
-Flutter is the most important dynamic flutter phenomena\cite{MohammedFREEWINGS}. It occurs when an aircraft loses its stability due to an extraction of energy from the air stream by the aircraft structure. Resulting in an oscillatory motion that does not decay and increases in magnitude over time. This phenomenon is undesirable as it damages the aircraft structure and wear out its life cycle.\\
+Flutter is the most important dynamic flutter phenomena \cite{MohammedFREEWINGS}. It occurs when an aircraft loses its stability due to an extraction of energy from the air stream by the aircraft structure. Resulting in an oscillatory motion that does not decay and increases in magnitude over time. This phenomenon is undesirable as it damages the aircraft structure and wear out its life cycle.\\
 
 Flutter boundary is defined as  the lowest speed at which a small perturbation to a static equilibrium results in flutter. Lowest airspeed at which the system has a complex conjugate pair of eigenvalues with zero real part. 
 \begin{figure}[h]
@@ -162,6 +224,14 @@ ec.L = ec.qSC_{L,{\theta _0}}(\theta _0 + \theta),\hspace{1cm} M_{ac} = qScC_{M_
 qScC_{M_{ac}} + ec. qSC_{L,{\theta _0}}(\theta _0 + \theta) = K_{\theta}\theta
 \end{equation}
 
+\subsection{High AR Wing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .55\textwidth]{figures/Eaton-highly-flexible-wing.png}
+    \caption{Nonlinear loading on a high AR wing.}
+    \label{fig:high-AR-load}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%% LITERATURE REVIEW %%%%%%%%%%%%%%%%%%%%%%%
@@ -191,21 +261,42 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
 %%%%%%%%%% Technical/Scientific Methodology %%%%%%%%%%
 \section{Methodology - (1-2 page)}
 \begin{itemize}
-    \item Computational and analytical method
+    \item Computational and analytical method using eigenvalue solutions of the flutter equation.
     \item From existing code
     \item New one
     \item Different models
     \item Compare to existing experimental results
+    \item Benchmarking against the existing results
+    \item Use the code to analyse the aeroelastic behaviour of SUGAR High
 \end{itemize}
 
 %%%%%%%%%% Preliminary Studies %%%%%%%%%%
 \section{Preliminary Studies - (3 page)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .7\textwidth]{figures/SUGAR-High_flutter.png}
+    \caption{Flutter speed plot for the SUGAR High conceptual wing}
+    \label{fig:SUGAR-flutter}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .7\textwidth]{figures/SUGAR-High_divergence.png}
+    \caption{Divergence speed plot for the SUGAR High conceptual wing}
+    \label{fig:SUGAR-divergence}
+\end{figure}
+
+\subsection{Initial Conclusions - (1/2 page)}
 
 %%%%%%%%%% Initial Conclusions and Risk Management %%%%%%%%%%
-\section{Initial Conclusions and Risk Management - (1/2 page)}
+\section{Risk Management - (1/2 page)}
 
 %%%%%%%%%% Future Work %%%%%%%%%%
 \section{Future Work - (1/2 page)}
+\begin{itemize}
+    \item other parameters
+    \item nonlinear
+\end{itemize}
 
 %%%%%%%%%% Project Work plan %%%%%%%%%%
 \section{Work Plan}
