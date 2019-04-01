@@ -261,7 +261,7 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
 %%%%%%%%%% Technical/Scientific Methodology %%%%%%%%%%
 \section{Methodology - (1-2 page)}
 \begin{itemize}
-    \item Computational and analytical method using eigenvalue solutions of the flutter equation.
+    \item Computational and analytical method using \textbf{eigenvalue solutions} of the flutter equation.
     \item From existing code
     \item New one
     \item Different models
@@ -269,6 +269,62 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
     \item Benchmarking against the existing results
     \item Use the code to analyse the aeroelastic behaviour of SUGAR High
 \end{itemize}
+\subsection{Eigenvalue Solutions}
+
+\subsection{Validation against existing studies}
+\textbf{IMPORTANT PARAMETERS}
+\begin{itemize}
+    \item AR
+    \item span
+    \item baseline EI
+    \item baseline GJ
+\end{itemize}
+
+\begin{figure}[!hbt]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/CooperandWright_flutter.png}
+    \caption{Baseline model flutter calculation}
+    \label{fig:JandJ-flutter}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/CooperandWright_divergence.png}
+    \caption{Baseline model divergence calculation}
+    \label{fig:JandJ-div}
+    \end{minipage}
+\end{figure}
+\begin{figure}[!hbt]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/flutter.png}
+    \caption{Tang and Dowell flutter calculation}
+    \label{fig:TandD-flutter}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/divergence.png}
+    \caption{Tang and Dowell divergence calculation}
+    \label{fig:TandD-div}
+    \end{minipage}
+\end{figure}
+\begin{figure}[!hbt]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/Goland_fixed_flutter.png}
+    \caption{Goland heavy wing flutter calculation}
+    \label{fig:Goland-flutter}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/Goland_fixed_divergence.png}
+    \caption{Goland heavy wing divergence calculation}
+    \label{fig:Goland-div}
+    \end{minipage}
+\end{figure}
+
+\textbf{ERROR TABLE}
+
 
 %%%%%%%%%% Preliminary Studies %%%%%%%%%%
 \section{Preliminary Studies - (3 page)}
