@@ -36,11 +36,21 @@
 \author{
         \textit{Student}: Dharapa Pattanakul\\ 
         \textit{Supervisor}: Branislav Titurus\\
-		Universoty of Bristol \\
+		University of Bristol \\
 		Department of Aerospace Engineering }
 %\fi
 
 \maketitle
+\cleardoublepage
+%%%%%%%%%% Executive Summary %%%%%%%%%
+\newpage
+\section*{Executive Summary - (1 page)}
+\begin{itemize}
+    \item use a nice graph
+    \item simplified and anotated
+\end{itemize}
+\cleardoublepage
+
 %----------- table of contents ----------%
 \newpage
 \tableofcontents
@@ -51,16 +61,12 @@
 %List of tables
 \listoftables
 \addcontentsline{toc}{section}{\numberline\ {}List of tables}
-\cleardoublepage
-\newpage
+%\cleardoublepage
+%\newpage
+
 \section*{Nomenclatures}
 \cleardoublepage
 %----------------------------------------%
-
-%%%%%%%%%% Executive Summary %%%%%%%%%
-\newpage
-\section{Executive Summary - (1 page)}
-\cleardoublepage
 
 %%%%%%%%%% Problem Definition %%%%%%%%%%
 \newpage
@@ -94,6 +100,8 @@ The reason given above has attracted many attention to the study of aeroelastici
     \item Flutter - mohemmed
     \item Divergence
     \item High AR and nonlinearities
+    \item Model development (1p)
+    \item Parameters acquisition (1/2p)
 \end{itemize}
 \fi
 \subsection{Aeroelasticity}
@@ -101,7 +109,7 @@ Aeroelastic phenomena occurs when there is an interaction between structures and
 
 %------ wrapped figure of triangle -----
 \begin{wrapfigure}{r}{8.5cm}
-    \includegraphics[width=8.5cm]{figures/aeroelas_triangle.png}
+    \includegraphics[width=8.5cm]{figures/aero-tri.png}
     \caption{Aeroelastic triangle}
     \label{fig:aero-tri}
 \end{wrapfigure} 
@@ -139,10 +147,12 @@ The change in lift due to a change in angle of incidence as modelled using an un
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = .7\textwidth]{figures/wagner.png}
+    \includegraphics[width = .8\textwidth]{figures/wagner-func.png}
     \caption{Change in lift due to change in angle of incidence.}
     \label{fig:wagner}
 \end{figure}
+
+
 
 
 \subsubsection{Structure}
@@ -153,20 +163,17 @@ The structural model used in this analysis is the binary wing aeroelastic model.
     \caption{Full aircraft 'Free-Free' assumed mode shapes}
     \label{fig:free-free}
 \end{figure}
-The kinetic energy due to the dynamic motion in bending and torsion can be written as
-\begin{equation}
-    T = \frac{m}{2}\int_0^s \int_0^c \Big( \Big{(} \frac{y}{s}\Big{)}^2\dot{q_1}+\Big{(}\frac{y}{s}\Big{)}(x-x_f)\dot{q_2}\Big{)}^2dxdy
-\end{equation}
-The elastic potential energy corresponds to the strain energy in bending and torsion can be represented as
-\begin{equation}
-    U = \frac{1}{2}\int_0^s EI \Big{(}\frac{2q_1}{s^2}\Big{)}^2dy+\frac{1}{2}\int_0^sGJ\Big{(}\frac{q_2}{s}\Big{)}^2dy
-\end{equation}
+The kinetic energy ($T$) due to the dynamic motion and the elastic potential energy ($U$) corresponding to the strain energy in bending and torsion can be written as
+\begin{align}
+    T &= \frac{m}{2}\int_0^s \int_0^c \Big( \Big{(} \frac{y}{s}\Big{)}^2\dot{q_1}+\Big{(}\frac{y}{s}\Big{)}(x-x_f)\dot{q_2}\Big{)}^2dxdy\\
+    U &= \frac{1}{2}\int_0^s EI \Big{(}\frac{2q_1}{s^2}\Big{)}^2dy+\frac{1}{2}\int_0^sGJ\Big{(}\frac{q_2}{s}\Big{)}^2dy
+\end{align}
 
-Where $q_1$ and $q_2$ are generalised coordinates corresponding to the simple assumed shapes $\psi_1$ and $\psi_2$ as shown in figure \ref{fig:free-free}. Uniformed distribution of mass is assumed here. 
+Where $q_1$ and $q_2$ are generalised coordinates corresponding to the simple assumed shapes $\Phi_1$ and $\Phi_2$ as shown in figure \ref{fig:free-free}. Uniformed distribution of mass is assumed here. 
 
 
 \subsection{Aeroelastic phenomena}
-Aeroelastic phenomena can be categorised into two categories: dynamic and static.
+Aeroelastic phenomena can be categorised into two categories: dynamic and static. 
 
 \iffalse
 \begin{figure}[H]
@@ -177,7 +184,7 @@ Aeroelastic phenomena can be categorised into two categories: dynamic and static
 \end{figure}
 \fi
 
-\textbf{Apply Lagrange to get this}
+\textbf{Apply Lagrange to get this - just mention it briefly - simple form is enough - REFERENCE THE BOOK!}
 
 \begin{gather}
 \begin{split}
@@ -233,6 +240,7 @@ qScC_{M_{ac}} + ec. qSC_{L,{\theta _0}}(\theta _0 + \theta) = K_{\theta}\theta
     \label{fig:high-AR-load}
 \end{figure}
 
+\textbf{TALK ABOUT THE IMPORTANCE ON HIGH AR + COMPLICATIONS SURROUNDING THE MODEL}
 
 %%%%%%%%%%%%%%%%%%%%%%% LITERATURE REVIEW %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Literature Review}
@@ -247,7 +255,12 @@ All of these studies established that nonlinear modelling is essential, Ritter, 
 
 These studies mentioned above were focused on nonlinear study of the aeroelastic behaviour in high AR wings. However, the development of this model requires time and a better understanding of the field. It was decided that for the preliminary study at this lever, the linear model will be implemented and observed. The model developed in this project will be modified and improved into a nonlinear model in the Final Year Project.\\
 
-The linear model used in this project was based on Jan R. Wright and Jonathan E. Cooper - Introduction to Aircraft Aeroelasticity and Loads \cite{Wright2015INTRODUCTIONLOADS}. 
+The linear model used in this project was based on Jan R. Wright and Jonathan E. Cooper - Introduction to Aircraft Aeroelasticity and Loads \cite{Wright2015INTRODUCTIONLOADS}.\\
+
+The advantages of high AR wing was concluded in Suleman et al \cite{Suleman2017Non-linearVariation} that wings of this scheme achieves a significantly higher lift-to-drag ratio. With a downside of higher wing bending. The method executed in this paper is a comparison of the results to Tang and Dowell\cite{Tang2001ExperimentalWings} existing exoerimental results to benchmark the computational method developed. This is the practice that will be adopted for this project.\\
+
+Furthermore, the model adopted in this study if the Bending-Torsion model. This model was studied by Goland and Luke \cite{Goland1949AWings} by studying the natural frequenciesand was conlcuded that it is suitable for a flutter prediction although not as good as the forced excitation method.. 
+
 
 
 %%%%%%%%%% Aim and Objectives %%%%%%%%%%
@@ -257,6 +270,28 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
     \item The aim is to use linear method for IXP to perform a preliminary parameter study.
     \item Develop into a nonlinear tool for FYP for a better study.
 \end{itemize}
+\section*{Aims}
+To develop a computational model to investigate the effect of the wing aspect ratio on nonlinear aeroelastic response of an aircraft. 
+
+\section*{Objectives} 
+\begin{itemize}
+    \item Explore existing experimental literature to use as a benchmark for the computational model that will be developed. The literature should include a range of aspect ratios as much as data is available.
+    \item Explore literature on different numerical methods to find the most suitable one for the project. The criteria should includes:
+    \begin{enumerate}
+        \item Not too high fidelity.
+        \item Not too computationally intensive.
+        \item Works for a range of aspect ratios.
+    \end{enumerate}
+    \item Investigate, in-depth, the existing MATLAB code used in the Aeroelasticity coursework provided by Professor Cooper.
+    \item Adapt the existing code to cater for a non-linear model. Based the model from numerical literature explored. Dimensions of aircraft already being investigated previously in experimental projects will be used in the model to validate the code.
+   \item Adapt and modify the code as needed until the computational results agree with the experiment ones.
+    \item Test the code againt different existing results to find limitations.
+    \item If the range of workable dimensions is suitable for the project, different aspect ratio wing models will then be analysed.
+    \item If the limitation is not satisfactory, more modification will be needed to make a suitable model.
+    \item Upon obtaining results from different aircraft configurations, an analysis will be carried out on the effect of aspect ratios on non-linear aeroelastic response of an aircraft.
+    
+\end{itemize}
+
 
 %%%%%%%%%% Technical/Scientific Methodology %%%%%%%%%%
 \section{Methodology - (1-2 page)}
@@ -271,14 +306,30 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
 \end{itemize}
 \subsection{Eigenvalue Solutions}
 
+\subsection{Increments of EI and GJ by percentage - \cite{MohammedFREEWINGS}}
+
 \subsection{Validation against existing studies}
-\textbf{IMPORTANT PARAMETERS}
+\textbf{ADD TABLE OF IMPORTANT PARAMETERS}
 \begin{itemize}
     \item AR
     \item span
     \item baseline EI
     \item baseline GJ
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{figures/para.png}
+    \caption{2D Illustration of the models}
+    \label{fig:2D-wings}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/iso-view.png}
+    \caption{3D isotropic view of the comparison}
+    \label{fig:3D-wings}
+\end{figure}
 
 \begin{figure}[!hbt]
     \begin{minipage}{.5\textwidth}
@@ -323,11 +374,16 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
     \end{minipage}
 \end{figure}
 
-\textbf{ERROR TABLE}
+\textbf{VALIDATION}
+\textbf{ADD ERROR TABLE}
+\textbf{Do graph of this - obtained vs. reported results}
+\textbf{what's the limit, quatify the validity, limits}
+\textbf{what makes it works}
 
 
 %%%%%%%%%% Preliminary Studies %%%%%%%%%%
 \section{Preliminary Studies - (3 page)}
+\textbf{WHY ARE YOU DOING IT}
 \begin{figure}[H]
     \centering
     \includegraphics[width = .7\textwidth]{figures/SUGAR-High_flutter.png}
@@ -342,10 +398,32 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
     \label{fig:SUGAR-divergence}
 \end{figure}
 
+\textbf{TRENDS}
+
+\begin{itemize}
+    \item Reasons for discrepancies - nonlinearity
+\end{itemize}
+
 \subsection{Initial Conclusions - (1/2 page)}
+\begin{itemize}
+    \item Flutter is affected by both
+    \item Divergence is only affected by Torsional Stiffness
+    \item How to increase EI
+    \begin{itemize}
+        \item Material used - stiffer materials - affects E
+        \item Add strut - affects I
+    \end{itemize}
+    \item How to increase GJ
+    \begin{itemize}
+        \item sweep back - decrease torsion
+    \end{itemize}
+\end{itemize}
 
 %%%%%%%%%% Initial Conclusions and Risk Management %%%%%%%%%%
 \section{Risk Management - (1/2 page)}
+Risk of model not working
+not getting parameter
+valiadste model again multiple case to make sure it works
 
 %%%%%%%%%% Future Work %%%%%%%%%%
 \section{Future Work - (1/2 page)}
@@ -356,11 +434,44 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
 
 %%%%%%%%%% Project Work plan %%%%%%%%%%
 \section{Work Plan}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .9\textwidth]{figures/dandm.png}
+    %\label{fig:my_label}
+\end{figure}
+
+\textbf{ADD FOURTH YEAR PLAN}
+\cleardoublepage
 
 %%%%%%%%%% Reference %%%%%%%%%%
+\newpage
 \bibliography{references.bib}
 
 %%%%%%%%%% Appendices %%%%%%%%%%
 \section*{Appendix}
+\begin{table}[H]
+    \centering
+    \caption{Wright and Cooper Baseline wing model data \cite{Wright2015INTRODUCTIONLOADS}}
+    \includestandalone{tables/baseline}
+    \label{tab:JandJ-wing-data}
+\end{table}
+\begin{table}[H]
+    \centering
+    \caption{Tang and Dowell Experimental wing model data \cite{Tang2001ExperimentalWings}}
+    \includestandalone{tables/tanganddowell}
+    \label{tab:TandD-exp-wing-data}
+\end{table}
+\begin{table}[H]
+    \centering
+    \caption{Goland Heavy wing model data \cite{CHETANNICHKAWDE2006NONLINEARCONTINUATION}}
+    \includestandalone{tables/Goland}
+    \label{tab:Goland-wing-data}
+\end{table}
+\begin{table}[H]
+    \centering
+    \caption{SUGAR High wing model data \cite{Bradley2015SubsonicExploration}}
+    \includestandalone{tables/SUGAR}
+    \label{tab:SUGAR-wing-data}
+\end{table}
 
 \end{document}
