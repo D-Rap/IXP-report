@@ -1,25 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{mypackage}
 
-%%%%%%%%%%%%%%%%% Group Study Heading %%%%%%%%%%%%%%%%
-\iffalse
-%{
-\makeatletter
-\DeclareRobustCommand{\Group}{%
-  G\kern-.09em {\setbox0\hbox{T}%
-    \vbox to\ht0{\hbox{%
-      \csname S@\f@size\endcsname\fontsize\sf@size\z@ \math@fontsfalse\selectfont R}%
-      \vss}%
-    }\kern-.1em \hbox{O\kern-.1667em\lower.4ex\hbox{U}\kern-.15ex P}}
-
-\title{Aerodynamics 3 Short Questions}
-\date{January 2019}
-\author{T.C.S. Rendall fanboi \Group \\ Grupo Especial de Aerodinámica \\ G.E.A.s Bristol}
-%}
-\fi
-%%%%%%%%%%%%%%%% For non-academic use %%%%%%%%%%%%%%%%%
-
-%\iffalse
 \begin{document}
 {\fontfamily{cmr}\selectfont
 \title{ \normalsize \textsc{}
@@ -89,6 +70,7 @@ The reason given above has attracted many attention to the study of aeroelastici
 \newpage
 %%%%%%%%%% Background %%%%%%%%%%
 \section{Background - (6 page)}
+\label{sec:background}
 \iffalse
 \begin{itemize}
     \item Aeroelasticity - Cooper
@@ -156,13 +138,16 @@ The change in lift due to a change in angle of incidence as modelled using an un
 
 
 \subsubsection{Structure}
-The structural model used in this analysis is the binary wing aeroelastic model. This implies that the wing is a flexible rectangular, unswept, cantilever wing with one bending and one torsion assumed shape (as shown in figure \ref{fig:free-free}).
+The structural model used in this analysis is the binary wing aeroelastic model. This implies that the wing is a flexible rectangular, unswept, cantilever wing with one bending and one torsion assumed shape \\
+\iffalse
+(as shown in figure \ref{fig:free-free}).
 \begin{figure}[H]
     \centering
     \includegraphics[width = .6\textwidth]{figures/free-free-mode-shape.png}
     \caption{Full aircraft 'Free-Free' assumed mode shapes}
     \label{fig:free-free}
 \end{figure}
+\fi
 The kinetic energy ($T$) due to the dynamic motion and the elastic potential energy ($U$) corresponding to the strain energy in bending and torsion can be written as
 \begin{align}
     T &= \frac{m}{2}\int_0^s \int_0^c \Big( \Big{(} \frac{y}{s}\Big{)}^2\dot{q_1}+\Big{(}\frac{y}{s}\Big{)}(x-x_f)\dot{q_2}\Big{)}^2dxdy\\
@@ -186,11 +171,15 @@ Aeroelastic phenomena can be categorised into two categories: dynamic and static
 
 \textbf{Apply Lagrange to get this - just mention it briefly - simple form is enough - REFERENCE THE BOOK!}
 
-\begin{gather}
+\begin{equation}\label{eq:full-aeroe}
+\begin{gathered}
 \begin{split}
     m\begin{bmatrix} \frac{s^5c}{5} & \frac{s^4}{4}\Big{(}\frac{c^2}{2}-cx_f\Big{)} \\ \frac{s^4}{4}\Big{(}\frac{c^2}{2}-cx_f\Big{)} & \frac{s^3}{3}\Big{(}\frac{c^3}{3}-c^2x_f+cx_f^2\Big{)} \end{bmatrix} \begin{bmatrix}\ddot{q_1}\\ \ddot{q_2} \end{bmatrix} + \rho V \begin{bmatrix} \frac{ca_w s^5}{10} & 0 \\ -\frac{c^2e a_w s^4}{8} & -\frac{c^3M_{\dot\theta}s^3}{24} \end{bmatrix}\begin{bmatrix}\dot{q_1}\\ \dot{q_2}\end{bmatrix} +\\ \Bigg{\{}\rho V^2  \begin{bmatrix} 0 & \frac{ca_ws^4}{8} \\ 0 & -\frac{c^2ea_ws^3}{6} \end{bmatrix} + \begin{bmatrix} 4EIs & 0 \\ 0 & GJs \end{bmatrix} \Bigg{\}}\begin{bmatrix} q_1 \\ q_2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
 \end{split}
-\end{gather}
+\end{gathered}
+\end{equation}
+
+
 
 %Static  aeroelastic  phenomena involves  the  study  of  the  deformation  of  the  aircraft  and  how  this influences  the  distribution  of  lift.  This  con sequently  causes  torsional  divergence  reducing  the effectiveness of the control surface. Static aeroelasticity is also no affected by mass properties of the  aircraft  and  is  not  influenced  by  oscillations.  Dynamic  aeroelastic  phenomena  involves the analysis of  flutter of the  aircraft which disturbs the stability of the aircraft and the air stream is subjected to extraction of energy from the aircraft structure. 
 
@@ -259,9 +248,22 @@ The linear model used in this project was based on Jan R. Wright and Jonathan E.
 
 The advantages of high AR wing was concluded in Suleman et al \cite{Suleman2017Non-linearVariation} that wings of this scheme achieves a significantly higher lift-to-drag ratio. With a downside of higher wing bending. The method executed in this paper is a comparison of the results to Tang and Dowell\cite{Tang2001ExperimentalWings} existing exoerimental results to benchmark the computational method developed. This is the practice that will be adopted for this project.\\
 
-Furthermore, the model adopted in this study if the Bending-Torsion model. This model was studied by Goland and Luke \cite{Goland1949AWings} by studying the natural frequenciesand was conlcuded that it is suitable for a flutter prediction although not as good as the forced excitation method.. 
+Furthermore, the model adopted in this study if the Bending-Torsion model. This model was studied by Goland and Luke \cite{Goland1949AWings} by studying the natural frequenciesand was conlcuded that it is suitable for a flutter prediction although not as good as the forced excitation method. The aerodynamic model used by Goland and Luke was the Wagner aerodynamic force. This model was used in this study and was deems suitable by this literature.
 
+\subsubsection{Model research from existing literature}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/iso-view.png}
+    \caption{3D isotropic view of the comparison}
+    \label{fig:3D-wings}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{figures/para.png}
+    \caption{2D Illustration of the models}
+    \label{fig:2D-wings}
+\end{figure}
 
 %%%%%%%%%% Aim and Objectives %%%%%%%%%%
 \section{Aim and Objectives - (1/2 page)}
@@ -275,7 +277,7 @@ To develop a computational model to investigate the effect of the wing aspect ra
 
 \section*{Objectives} 
 \begin{itemize}
-    \item Explore existing experimental literature to use as a benchmark for the computational model that will be developed. The literature should include a range of aspect ratios as much as data is available.
+    \item Explore existing experimental literatures to use as a benchmark for the computational model that will be developed. The literature should include a range of aspect ratios as much as data is available.
     \item Explore literature on different numerical methods to find the most suitable one for the project. The criteria should includes:
     \begin{enumerate}
         \item Not too high fidelity.
@@ -295,105 +297,86 @@ To develop a computational model to investigate the effect of the wing aspect ra
 
 %%%%%%%%%% Technical/Scientific Methodology %%%%%%%%%%
 \section{Methodology - (1-2 page)}
-\begin{itemize}
-    \item Computational and analytical method using \textbf{eigenvalue solutions} of the flutter equation.
-    \item From existing code
-    \item New one
-    \item Different models
-    \item Compare to existing experimental results
-    \item Benchmarking against the existing results
-    \item Use the code to analyse the aeroelastic behaviour of SUGAR High
-\end{itemize}
+%\begin{itemize}
+    %\item Computational and analytical method using \textbf{eigenvalue solutions} of the flutter equation.
+    %\item From existing code
+    %\item New one
+    %\item Different models
+    %\item Compare to existing experimental results
+    %\item Benchmarking against the existing results
+    %\item Use the code to analyse the aeroelastic behaviour of SUGAR High
+%\end{itemize}
 \subsection{Eigenvalue Solutions}
+\label{sec:eig}
+The method of determining the speed at which flutter occurs used in this study was the eigenvalue solutions. The inertia, structural and aerodynamic models used were explained in section \ref{sec:background}. The full aeroelastic equation was stated ealier as equation (3). Eigenvalues were obtained from this equation. The full aeroelastic equation can be simplified and represented as\\
+\begin{equation}\label{eq:simplified-aeroe}
+    mA\ddot{q}+\rho VB\dot{q}+\{\rho V^2 C+E\}q = 0
+\end{equation}
 
-\subsection{Increments of EI and GJ by percentage - \cite{MohammedFREEWINGS}}
+The eigenvalues can be obtained by solving the determinant of the gathered 2x2 matrix of the full aeroelastic equation.\\
+
+\begin{equation}
+    \begin{gathered}
+    \begin{vmatrix} A_{11}\lambda^2+B_{11}V\lambda+C_{11}V^2+E_{11} & A_{12}\lambda^2+B_{12}V\lambda+C_{12}V^2\\
+    A_{21}\lambda^2+B_{21}V\lambda+C_{21}V^2&A_{21}\lambda^2+B_{22}V\lambda+C_{22}V^2+E_{22}\end{vmatrix}=0
+    \end{gathered}
+\end{equation}
+
+The solution of this resulted in a quartic equation\\
+\begin{equation}\label{eq:b_n}
+    b_4\lambda^4+b_3\lambda^3+b_2\lambda^2+b_1\lambda+b_0 = 0
+\end{equation}
+where $b_n$, represented the constant for each term which also include the $V$ terms.\\
+
+To obtain the eigenvalues, Routh-Hurwitz stability analysis was applied to the quartic equation which yielded,
+
+\begin{equation}
+    b_4b_1^2-b_1b_2b_3+b_0b_3^2 = 0
+\end{equation}
+
+The lowest positive root with zero imaginary part represented the speed at which flutter occurs.
+
+\subsection{Code development}
+The MATLAB script was developed based on the numerical model described in section \ref{sec:eig}. Symbolic MATLAB was used to solved the Routh-Hurwitz equation (eq.(11)). The \textit{syms} command was used to define $V$ and $\lambda$ as variables to be solved for.        
+
+\subsection{Parameter study}
+Bending stiffness (EI) and torsional stiffness (GJ) were varied by $\pm$2.5\% increments up to 10\%. The percentage increment was used instead of adding a certain value to make the increase and decrease of the parameter value comparable between different models. 
 
 \subsection{Validation against existing studies}
-\textbf{ADD TABLE OF IMPORTANT PARAMETERS}
-\begin{itemize}
-    \item AR
-    \item span
-    \item baseline EI
-    \item baseline GJ
-\end{itemize}
+\begin{table}[H]
+    \centering
+    \caption{Wing model parameters}
+    \includestandalone{tables/parameters}
+    \label{tab:data}
+\end{table}
 
-\begin{figure}[H]
+\begin{table}[H]
     \centering
-    \includegraphics[width = \textwidth]{figures/para.png}
-    \caption{2D Illustration of the models}
-    \label{fig:2D-wings}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{figures/iso-view.png}
-    \caption{3D isotropic view of the comparison}
-    \label{fig:3D-wings}
-\end{figure}
-
-\begin{figure}[!hbt]
-    \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width = \textwidth]{figures/CooperandWright_flutter.png}
-    \caption{Baseline model flutter calculation}
-    \label{fig:JandJ-flutter}
-    \end{minipage}%
-    \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width = \textwidth]{figures/CooperandWright_divergence.png}
-    \caption{Baseline model divergence calculation}
-    \label{fig:JandJ-div}
-    \end{minipage}
-\end{figure}
-\begin{figure}[!hbt]
-    \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width = \textwidth]{figures/flutter.png}
-    \caption{Tang and Dowell flutter calculation}
-    \label{fig:TandD-flutter}
-    \end{minipage}%
-    \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width = \textwidth]{figures/divergence.png}
-    \caption{Tang and Dowell divergence calculation}
-    \label{fig:TandD-div}
-    \end{minipage}
-\end{figure}
-\begin{figure}[!hbt]
-    \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width = \textwidth]{figures/Goland_fixed_flutter.png}
-    \caption{Goland heavy wing flutter calculation}
-    \label{fig:Goland-flutter}
-    \end{minipage}%
-    \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width = \textwidth]{figures/Goland_fixed_divergence.png}
-    \caption{Goland heavy wing divergence calculation}
-    \label{fig:Goland-div}
-    \end{minipage}
-\end{figure}
+    \caption{Benchmaking of results and their errors}
+    \includestandalone{tables/error}
+    \label{tab:error}
+\end{table}
 
 \textbf{VALIDATION}
 \textbf{ADD ERROR TABLE}
 \textbf{Do graph of this - obtained vs. reported results}
 \textbf{what's the limit, quatify the validity, limits}
 \textbf{what makes it works}
-
+\cleardoublepage
 
 %%%%%%%%%% Preliminary Studies %%%%%%%%%%
 \section{Preliminary Studies - (3 page)}
 \textbf{WHY ARE YOU DOING IT}
 \begin{figure}[H]
     \centering
-    \includegraphics[width = .7\textwidth]{figures/SUGAR-High_flutter.png}
+    \includegraphics[width = .7\textwidth]{figures/SUGAR_flutter.png}
     \caption{Flutter speed plot for the SUGAR High conceptual wing}
     \label{fig:SUGAR-flutter}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = .7\textwidth]{figures/SUGAR-High_divergence.png}
+    \includegraphics[width = .7\textwidth]{figures/SUGAR_divergence.png}
     \caption{Divergence speed plot for the SUGAR High conceptual wing}
     \label{fig:SUGAR-divergence}
 \end{figure}
@@ -403,6 +386,13 @@ To develop a computational model to investigate the effect of the wing aspect ra
 \begin{itemize}
     \item Reasons for discrepancies - nonlinearity
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .7\textwidth]{figures/error-trend.png}
+    \caption{Relationship of aspect ratio and the discrepancies of the results calculated.}
+    \label{fig:error}
+\end{figure}
 
 \subsection{Initial Conclusions - (1/2 page)}
 \begin{itemize}
@@ -425,6 +415,8 @@ Risk of model not working
 not getting parameter
 valiadste model again multiple case to make sure it works
 
+This project used a combination of computational and numerical methods. The risk in this study included the risk of not being able to produce a working MATLAB script. This risk was mitigated by using Professor Jonathan Cooper's MATLAB script \cite{Wright2015INTRODUCTIONLOADS} for flutter speed calculation as a starting point. This was, there is a backup script that can be modified to take in ranges of different parameters for calculation. 
+
 %%%%%%%%%% Future Work %%%%%%%%%%
 \section{Future Work - (1/2 page)}
 \begin{itemize}
@@ -440,7 +432,14 @@ valiadste model again multiple case to make sure it works
     %\label{fig:my_label}
 \end{figure}
 
-\textbf{ADD FOURTH YEAR PLAN}
+\textbf{Final Year Research Project}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .9\textwidth]{figures/fyp.png}
+    %\caption{Caption}
+    %\label{fig:my_label}
+\end{figure}
+
 \cleardoublepage
 
 %%%%%%%%%% Reference %%%%%%%%%%
@@ -449,29 +448,68 @@ valiadste model again multiple case to make sure it works
 
 %%%%%%%%%% Appendices %%%%%%%%%%
 \section*{Appendix}
+
 \begin{table}[H]
     \centering
-    \caption{Wright and Cooper Baseline wing model data \cite{Wright2015INTRODUCTIONLOADS}}
-    \includestandalone{tables/baseline}
-    \label{tab:JandJ-wing-data}
-\end{table}
-\begin{table}[H]
-    \centering
-    \caption{Tang and Dowell Experimental wing model data \cite{Tang2001ExperimentalWings}}
-    \includestandalone{tables/tanganddowell}
+    \caption{Tang and Dowell Experimental wing model\cite{Tang2001ExperimentalWings} and Goland's model \cite{CHETANNICHKAWDE2006NONLINEARCONTINUATION} data}
+    \includestandalone{tables/TDandG}
     \label{tab:TandD-exp-wing-data}
 \end{table}
 \begin{table}[H]
     \centering
-    \caption{Goland Heavy wing model data \cite{CHETANNICHKAWDE2006NONLINEARCONTINUATION}}
-    \includestandalone{tables/Goland}
+    \caption{Wright and Cooper \cite{Wright2015INTRODUCTIONLOADS} baseline model and SUGAR High wing model \cite{Bradley2015SubsonicExploration} data}
+    \includestandalone{tables/WCandSH}
     \label{tab:Goland-wing-data}
 \end{table}
+
 \begin{table}[H]
     \centering
-    \caption{SUGAR High wing model data \cite{Bradley2015SubsonicExploration}}
-    \includestandalone{tables/SUGAR}
-    \label{tab:SUGAR-wing-data}
+    \caption{EI and GJ parameter increments}
+    \includestandalone{tables/EIGJ}
+    \label{tab:ei-gj}
 \end{table}
+
+\begin{figure}[!hbt]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/Cooper_flutter.png}
+    \caption{Baseline model flutter calculation}
+    \label{fig:JandJ-flutter}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/Cooper_divergence.png}
+    \caption{Baseline model divergence calculation}
+    \label{fig:JandJ-div}
+    \end{minipage}
+\end{figure}
+\begin{figure}[!hbt]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/Tang_flutter.png}
+    \caption{Tang and Dowell flutter calculation}
+    \label{fig:TandD-flutter}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/Tang_divergence.png}
+    \caption{Tang and Dowell divergence calculation}
+    \label{fig:TandD-div}
+    \end{minipage}
+\end{figure}
+\begin{figure}[!hbt]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/Goland_flutter.png}
+    \caption{Goland heavy wing flutter calculation}
+    \label{fig:Goland-flutter}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width = \textwidth]{figures/Goland_divergence.png}
+    \caption{Goland heavy wing divergence calculation}
+    \label{fig:Goland-div}
+    \end{minipage}
+\end{figure}
 
 \end{document}

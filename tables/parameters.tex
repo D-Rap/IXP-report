@@ -1,0 +1,26 @@
+\documentclass{standalone}
+%% My Packages
+\usepackage{mypackage}
+\begin{document}
+
+    \centering
+    \begin{tabular}{l c c c c}
+    \toprule
+    \toprule
+    Properties&TD&G&WC&SH\\
+    \midrule
+    &\multicolumn{4}{c}{\textit{Wing}}\\
+    Span $L$    & 0.4508 m & 6.096 m & 7.500 m & 25.908 m  \\
+    Chord $c$   & 0.0508 m & 0.914 m & 2.000 m & 2.228 m \\ 
+    Aspect Ratio & 8.87 & 6.67 & 3.75 & 11.63 \\
+    Mass per unit Length     & 0.2351 kg/m & 35.720 kg/m & 200.00 kg/m & 213.632 kg/m\\
+    %Moment of inertia (50\% chord)  & 0.2056 $\times 10^{-4}$ kgm\\
+    %Spanwise elastic axis   & 50\%c & 50\%c & 48\%c & 50\%c\\
+    %Centre of gravity   & 49\%c & 33\%c & 50\% & 50\%c\\
+     Chordwise bending rigidity $EI$  & 0.1844 $\times 10^2$ Nm$^2$ & 9.77 $\times 10^6$ Nm$^2$ & 2.00 $\times 10^7$ Nm$^2$ & 1.43 $\times 10^9$ Nm$^2$\\
+    Torsional rigidity $GJ$ & 0.9539 Nm$^2$ & 9.87$\times 10^5$ Nm$^2$ & 2.00 $\times 10^6$ Nm$^2$ & 1.43 $\times 10^8$ Nm$^2$\\
+    \bottomrule
+    \bottomrule
+    \end{tabular}
+    
+\end{document}
