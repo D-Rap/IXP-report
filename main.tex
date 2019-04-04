@@ -267,13 +267,13 @@ Furthermore, the model adopted in this study if the Bending-Torsion model. This 
 
 %%%%%%%%%% Aim and Objectives %%%%%%%%%%
 \section{Aim and Objectives - (1/2 page)}
-\begin{itemize}
-    \item Develop a computational method to study flutter and divergence behaviour.
-    \item The aim is to use linear method for IXP to perform a preliminary parameter study.
-    \item Develop into a nonlinear tool for FYP for a better study.
-\end{itemize}
+%\begin{itemize}
+ %   \item Develop a computational method to study flutter and divergence behaviour.
+ %   \item The aim is to use linear method for IXP to perform a preliminary parameter study.
+ %   \item Develop into a nonlinear tool for FYP for a better study.
+%\end{itemize}
 \section*{Aims}
-To develop a computational model to investigate the effect of the wing aspect ratio on nonlinear aeroelastic response of an aircraft. 
+To develop a computational model to perform a parameter study on aeroelastic responses of aircraft wings with high aspect ratio.
 
 \section*{Objectives} 
 \begin{itemize}
@@ -387,12 +387,14 @@ Bending stiffness (EI) and torsional stiffness (GJ) were varied by $\pm$2.5\% in
     \item Reasons for discrepancies - nonlinearity
 \end{itemize}
 
-\begin{figure}[H]
+\begin{wrapfigure}{l}{8.5cm}
     \centering
-    \includegraphics[width = .7\textwidth]{figures/error-trend.png}
+    \includegraphics[width = 8.5cm]{figures/error-trend.png}
     \caption{Relationship of aspect ratio and the discrepancies of the results calculated.}
     \label{fig:error}
-\end{figure}
+\end{wrapfigure}
+
+Figure \ref{fig:error} shows the error trend proposed as observed by comparing the results calculated from the model developed against the existing analytical results. The discrepancies was thought to be a result of nonlinearities which were not included in this model.
 
 \subsection{Initial Conclusions - (1/2 page)}
 \begin{itemize}
@@ -445,6 +447,7 @@ This project used a combination of computational and numerical methods. The risk
 %%%%%%%%%% Reference %%%%%%%%%%
 \newpage
 \bibliography{references.bib}
+\cleardoublepage
 
 %%%%%%%%%% Appendices %%%%%%%%%%
 \section*{Appendix}
