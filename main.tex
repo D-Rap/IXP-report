@@ -7,7 +7,7 @@
 \title{ \normalsize \textsc{}
 		\\ [2.0cm]
 		\HRule{0.5pt} \\
-		\LARGE \textbf{\uppercase{Parameter Study on Aeroelastic Response of  High Aspect-Ratio Wings}
+		\LARGE \textbf{\uppercase{Parameter Study on Aeroelastic Responses of  High Aspect-Ratio Wings}
 		\HRule{2pt} \\ [0.5cm]
 		\normalsize \today \vspace*{5\baselineskip}}
 		}
@@ -39,13 +39,13 @@
 %\end{itemize}
 This study was carried out to develop a computational model for a parameter study on aeroelastic responses in an aircraft with high aspect ratio (AR) wings. High AR wings are being looked at as an alternative to a current configuration of commercial aircraft as this new design is more environmental friendly: provides a higher lift-to-drag ratio and longer ranges. However, the increase in structural flexibility of the wing makes this configuration more prone to catastrophic aeroelastic responses.\\
 
-\textbf{Section \ref{sec:prob-def}} defines the problems that arise in the existing method of analysing aeroelastic behaviour of the high AR wing: the computational model does not provide a sufficiently accurate result in most cases when compared to flight-test data. Furthermore, the improved high fidelity models are usually too time consuming and too expensive to be widely adapted.\cite{Jones2015PreliminaryExperiment}\\
+\textbf{Section \ref{sec:prob-def}} defines the problems that arise in the existing method of analysing aeroelastic behaviour in high AR wings: the computational model does not provide a sufficiently accurate result in most cases when compared to flight-test data. Furthermore, the improved high fidelity models are usually too time consuming and too expensive to be widely adapted.\cite{Jones2015PreliminaryExperiment}\\
 
-Background theories used in this study were outlined in \textbf{Section \ref{sec:background}} where the inertia model (no coupling between modes), aerodynamic model (unsteady aerodynamics) and structural model (two assumed shapes) were explained. These models were combined for the analysis of flutter and divergence behaviour. Section \ref{sec:lit-rev} presents the findings from literature review. The information and background researches were essential for this project to satisfy the aim and objectives listed in \textbf{Section \ref{sec:aim+obj}} with the main aim being the development of a computational model for aeroelastic behaviour analysis for high AR wings. \\
+Background theories used in this study were outlined in \textbf{Section \ref{sec:background}} where the inertia model (no coupling between modes), aerodynamic model (unsteady aerodynamics) and structural model (two assumed shapes) were explained. These models were combined for the analysis of flutter and divergence behaviour. Section \ref{sec:lit-rev} presents the findings from literature review. The information and background researches were essential for this project to make sure that aim and objectives listed in \textbf{Section \ref{sec:aim+obj}} were met. The main aim was the development of a computational model for aeroelastic behaviour analysis for high AR wings. \\
 
-\textbf{Section \ref{sec:method}} explains the approach and steps taken to yield the results from the parameter study. The eigenvalue solution method was briefly explained as a way to obtain the flutter speed and divergence speed. Comparisons against existing experimental/analytical results was the approach taken to validate the model. The errors and discrepancies resulting from the lack of nonlinearlities in the model were quantitatively illustrated in table \ref{tab:error}.\\
+\textbf{Section \ref{sec:method}} explains the approach and steps taken to yield the results for the parameter study. The eigenvalue solution method was briefly explained as a way to obtain the flutter speed and divergence speed. Comparisons against existing experimental/analytical results was the approach taken to validate the model. The errors and discrepancies resulting from lack of nonlinearlities in the model were quantitatively illustrated in table \ref{tab:error}.\\
 
-The results from the preliminary studies including the initial conclusions were presented in \textbf{Section \ref{sec:prelim}}. Figure \ref{fig:exec-flutt} shows the flutter speed calculation for the NASA's SUGAR High conceptual design model (a high AR wing aircraft) and figure \ref{fig:exec-div} shows divergence speeds. 
+The results from the preliminary studies including the initial conclusions were presented in \textbf{Section \ref{sec:prelim}}. Figure \ref{fig:exec-flutt} shows the flutter speed calculation for the NASA's SUGAR High conceptual design model (a high AR wing aircraft) and figure \ref{fig:exec-div} shows divergence speeds for the same model. 
 
 \begin{figure}[!hbt]
     \begin{minipage}{.5\textwidth}
@@ -107,11 +107,11 @@ Finally, the risks in this project and the ways to mitigate them were explained 
 %   \item Results
 %\end{itemize}
 %\subsection{Scope} 
-There is a strive for greener innovations that can be seen across the aviation industry. These ideas attempt to maximise flight efficiency while minimises environmental impact. One way to achieve this is by increasing wings' aspect-ratio (AR). This provides a higher lift-to-drag ratio and a longer range. However, this configuration has not yet been widely adapted into commercial jets due to a few limiting factor such as limiting spaces in airports. One of the important limiting factor is the flexibility of high AR wings; large deformation results in aeroelastic behaviour.\\ 
+There is a strive for greener innovations that can be seen across the aviation industry. These ideas attempt to maximise flight efficiency while minimises environmental impact. One way to achieve this is by increasing wings' aspect-ratio (AR). This provides a higher lift-to-drag ratio and a longer range. However, this configuration has not yet been widely adapted into commercial jets due to a few limiting factor such as limiting spaces in airports. One of the important limiting factor is the flexibility of high AR wings. High AR wings see a decrease in rigidity and large deformation results in aeroelastic behaviour.\\ 
 
-The advantages given above has attracted many attention to the study of aeroelasticity for high AR wing configurations. Several computational and experimental study have been done on the aeroelastic responses of unmanned aerial vehicles (UAV) over the past few decades, but only a few on commercial aircraft. This project will seek to develop a computational model for aeroelastic study for high AR wings. The nonlinear method was chosen for the better understanding of the coupling between structural deformation and aeroelastic response.\\
+The advantages given above have attracted many attentions to the study of aeroelasticity for high AR wings. Several computational and experimental study have been done on the aeroelastic responses of high AR unmanned aerial vehicles (UAV) over the past few decades, but only a few on commercial aircraft. This project will seek to develop a computational model for aeroelastic study of high AR wings in commercial aircraft. The nonlinear method was chosen for a better understanding of the coupling between structural deformation and aeroelastic responses.\\
 
-In this project, the parameter study was carried out to improve the understanding of how each properties affect the aeroelastic behaviour. This is useful for future design of the aircraft of high AR configuration or the purpose of aeroelastic tailoring. The main challenge faced in this project was the lack of studies to be used as a baseline. The main requirement of existing literature is that the study was done and deemed suitable for high AR wings.
+In this project, the parameter study was carried out to improve the understanding of how each property affects the aeroelastic behaviour. This is useful for any future design of aircraft of high AR wings configurations or for the purpose of aeroelastic tailoring. The main challenge faced in this project was the lack of studies to be used as a baseline. The main requirement of existing literature is that the study was done and deemed suitable for high AR wings.
 
 %%%%%%%%%% Background %%%%%%%%%%
 \section{Background}
@@ -132,7 +132,7 @@ In this project, the parameter study was carried out to improve the understandin
 \end{itemize}
 \fi
 \subsection{Aeroelasticity}
-Aeroelastic phenomena occurs when there is an interaction between structures and aerodynamics force in a model. This is predominant in a structure of high flexibility such as a high aspect-ratio (AR) wing. This means the aircraft with such property are more sensitive to flutter and divergence. Failure to predict the occurrence of these phenomenons can results in an aircraft losing its control, failing air worthiness regulations and a fatal structural damage.\\
+Aeroelastic phenomena occur when there is an interaction between structure and aerodynamic force in a model. This is predominant in a structure of high flexibility such as a high aspect ratio (AR) wing. Which means the aircraft with such property are more sensitive to flutter and divergence. Failure to predict the occurrence of these phenomena can results in an aircraft losing its control, failing air worthiness regulations and a fatal structural damage.\\
 
 %------ wrapped figure of triangle -----
 \begin{wrapfigure}{r}{8.5cm}
@@ -142,9 +142,9 @@ Aeroelastic phenomena occurs when there is an interaction between structures and
 \end{wrapfigure} 
 %----------------------------------------
 
-This study will investigate the affects of torsional stiffness and bending stiffness on flutter and divergence in a high AR wing. The study involves the three main forces that contribute to aeroelasticity: aerodynamic, elastic and inertia (as shown in figure \ref{fig:aero-tri}).\\
+This study will investigate the effect of torsional stiffness and bending stiffness on flutter and divergence in high AR wings. The study involves the three main forces that contribute to aeroelasticity: aerodynamic, elastic and inertia (as shown in figure \ref{fig:aero-tri}).\\
 
-Each component and the assumptions in the model which make up the aeroelastic phenomena are explained in section \ref{sec:inertia} - \ref{sec:struc}. The Aeroelastic phenomena are explained in section \ref{sec:aero-phe}. The responses considered here include both dynamic and static aeroelasticity. Dynamic response involves a study of flutter behaviour which disturbs aircraft stability and is influenced by oscillations of the structure. While static response focuses on the deformation of the structure and its effect of lift distribution.
+Each component and the assumptions in the model which make up the aeroelastic equation are explained in section \ref{sec:inertia} - \ref{sec:struc}. The Aeroelastic phenomena are explained in section \ref{sec:aero-phe}. The responses considered here include both dynamic and static aeroelasticity. Dynamic response involves a study of flutter behaviour which disturbs aircraft stability and is influenced by oscillations of the structure. While static response focuses on the deformation of the structure and its effect of lift distribution.
 \newpage
 \subsubsection{Inertia}
 \label{sec:inertia}
@@ -152,7 +152,7 @@ The inertia matrix can be represented as
 \begin{gather*}
     \begin{bmatrix}A_{bb} & A_{bt} \\ A_{tb} & A_{tt} \end{bmatrix}
 \end{gather*}
-Where $b$ repreesnts bending terms and $t$ represents torsion terms. However, as there is no inertia coupling in the model, $A_{bt} = A_{tb} = 0$. This allows the bending stiffness ($EI$) and the torsional stiffness ($GJ$) to be represented in term of the torsion and bending natural frequencies as
+Where $b$ represents bending terms and $t$ represents torsion terms. However, as there is no inertia coupling in the model, hence, $A_{bt} = A_{tb} = 0$. This allows the bending stiffness ($EI$) and the torsional stiffness ($GJ$) to be represented in term of the torsion and bending natural frequencies as
 \begin{equation}
     \omega_b = \sqrt{\frac{4EI}{A_{bb}s^3}} \text{ and } \omega_t = \sqrt{\frac{GJ}{A_{tt}s}}
 \end{equation}
@@ -178,19 +178,19 @@ M &= \rho V^2 \Big{(} M_z bz + M_{\dot z} \frac{b^2 \dot z}{V} + M_{\theta} b^2 
     \label{fig:wagner}
 \end{wrapfigure}
 
-The change in lift due to a change in angle of incidence as modelled using an unsteady aerodynamic model can be illustrated by the Wagner Function (figure \ref{fig:wagner}). The function shows that lift takes time to build up as the  airflow travels across the semi-chord of the lifting surface. The quasi-steady model assumes a sharp step change in lift as it does not include time-effect; assumes instantaneous. This can results in a substantial aeroelastic modelling errors \cite{Wright2015INTRODUCTIONLOADS}. The pitch damping term $M_{\dot{\theta}}$ is included in equation (2) to include the time delay effect. This property is negative and will be treated as a constant in this model.\\ \\
+The change in lift due to a change in angle of incidence as modelled using an unsteady aerodynamic model is illustrated as the Wagner Function (figure \ref{fig:wagner}). The function shows that lift takes time to build up as the  airflow travels across the semi-chord of the lifting surface. The quasi-steady model assumes a sharp step change in lift as it does not include time effect; assumes instantaneous. This can results in a substantial aeroelastic modelling error \cite{Wright2015INTRODUCTIONLOADS}. The pitch damping term $M_{\dot{\theta}}$ is included in equation (2) to include the time delay effect. This property is negative and will be treated as a constant in this model.\\ \\
 \iffalse
 \begin{figure}[H]
     \centering
     \includegraphics[width = .7\textwidth]{figures/wagner-func.png}
-    \caption{Change in lift due to change in angle of incidence.}
+    \caption{Wagner function \cite{Goland1949AWings}}
     \label{fig:wagner}
 \end{figure}
 \fi
 
 \subsubsection{Structure}
 \label{sec:struc}
-The structural model used in this analysis is the binary wing aeroelastic model. This implies that the wing is a flexible rectangular, unswept, cantilever wing with one bending and one torsion assumed shape \\
+The structural model used in this analysis is the binary wing aeroelastic model. This implies that the wing is flexible, rectangular, unswept, and is a cantilever wing with one bending and one torsion assumed shape. \\
 \iffalse
 (as shown in figure \ref{fig:free-free}).
 \begin{figure}[H]
@@ -618,7 +618,7 @@ where $b_n$, represented the constant for each term which also include the $V$ t
 \fi
 %\cleardoublepage
 %\newpage
-%\appendixname{ C}
+\appendixname{ B}
 \label{app:other-para}
 \begin{table}[H]
     \centering
