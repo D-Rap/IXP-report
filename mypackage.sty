@@ -3,7 +3,7 @@
 %for general information about packages check ctan.org
 
 %general template
-\usepackage[a4paper,left=1.5cm,top=2cm,right=1.5cm,bottom=1.5cm,headheight=27pt]{geometry}
+\usepackage[a4paper,left=1.5cm,top=1.5cm,right=1.5cm,bottom=1.5cm]{geometry}
 
 %%%%%% Header + Foot %%%%%%
 \usepackage{fancyhdr}
@@ -16,11 +16,12 @@
 \rhead{\includesvg[width=0.15\textwidth]{figures/Hpic.svg}}
 \rfoot{\today}
 \lfoot{}
-\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrulewidth}{2pt}
 \renewcommand{\footrulewidth}{1pt}
 
 %%%%%% Figures, Tables and Equations %%%%%%
 \usepackage{graphicx} % for figures
+\usepackage{titlepic} % figure in title
 \graphicspath{ {figures/} } %path for images, in the images folder
 \usepackage{float} % for figures in a container which cannot be broken between pages 
 \usepackage{multirow} % splitting environments into multiple parts
