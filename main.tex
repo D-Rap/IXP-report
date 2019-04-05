@@ -74,7 +74,7 @@ Finally, the risks in this project and the ways to mitigate them were explained 
 \listoffigures
 %\thispagestyle{empty}
 \addcontentsline{toc}{section}{\numberline\ {}List of figures}
-\cleardoublepage
+%\cleardoublepage
 %List of tables 
 \listoftables
 %\thispagestyle{empty}
@@ -84,12 +84,9 @@ Finally, the risks in this project and the ways to mitigate them were explained 
 
 \section*{Nomenclatures}
 \begin{table}[H]
-    \centering
-    \begin{tabular}{l c}
-         &  \\
-         & 
-    \end{tabular}
-    %\caption{Caption}
+    %\centering
+    %\caption{Wing model parameters}
+    \includestandalone{tables/nomen}
     \label{tab:nomen}
 \end{table}
 \cleardoublepage
@@ -346,7 +343,7 @@ Wing 4. - NASA's SUGAR High wing \cite{Bradley2015SubsonicExploration} (SH)
 \end{enumerate}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.8\textwidth]{figures/iso-view.png}
+    \includegraphics[width=\textwidth]{figures/iso-view.png}
     \caption{3D isotropic view of the comparison}
     \label{fig:3D-wings}
 \end{figure}
@@ -388,6 +385,7 @@ To develop a computational model to perform a parameter study on aeroelastic res
 %\end{itemize}
 \subsection{Eigenvalue Solutions}
 \label{sec:eig}
+\iffalse
 The method of determining the speed at which flutter occurs used in this study was the eigenvalue solutions. The inertia, structural and aerodynamic models used were explained in section \ref{sec:background}. The full aeroelastic equation was stated ealier as equation (6). Eigenvalues were obtained from this equation. 
 \iffalse
 The full aeroelastic equation can be simplified and represented as\\
@@ -404,29 +402,49 @@ To obtain the eigenvalues, Routh-Hurwitz stability analysis was applied to the q
 \end{equation}
 
 The lowest positive root with zero imaginary part represented the speed at which flutter occurs.
+\fi
+The method of determining the speed at which flutter occurs used in this study was the eigenvalue solutions. The inertia, structural and aerodynamic models used were explained in section \ref{sec:background}. The full aeroelastic equation was stated ealier as equation (3). Eigenvalues were obtained from this equation. The full aeroelastic equation can be simplified and represented as\\
+\begin{equation}\label{eq:simplified-aeroe}
+    mA\ddot{q}+\rho VB\dot{q}+\{\rho V^2 C+E\}q = 0
+\end{equation}
+
+The eigenvalues can be obtained by solving the determinant of the gathered 2x2 matrix of the full aeroelastic equation.\\
+
+\begin{equation}
+    \begin{gathered}
+    \begin{vmatrix} A_{11}\lambda^2+B_{11}V\lambda+C_{11}V^2+E_{11} & A_{12}\lambda^2+B_{12}V\lambda+C_{12}V^2\\
+    A_{21}\lambda^2+B_{21}V\lambda+C_{21}V^2&A_{21}\lambda^2+B_{22}V\lambda+C_{22}V^2+E_{22}\end{vmatrix}=0
+    \end{gathered}
+\end{equation}
+
+The solution of this resulted in a quartic equation\\
+\begin{equation}\label{eq:b_n}
+    b_4\lambda^4+b_3\lambda^3+b_2\lambda^2+b_1\lambda+b_0 = 0
+\end{equation}
+where $b_n$, represented the constant for each term which also include the $V$ terms.\\
+
+To obtain the eigenvalues, Routh-Hurwitz stability analysis was applied to the quartic equation which yielded,
+
+\begin{equation}
+    b_4b_1^2-b_1b_2b_3+b_0b_3^2 = 0
+\end{equation}
+
+The lowest positive root with zero imaginary part represented the speed at which flutter occurs.
 
 \subsection{Code development}
 The MATLAB script was developed based on the numerical model described in section \ref{sec:eig}. Symbolic MATLAB was used to solved the Routh-Hurwitz equation (eq.(11)). The \textit{syms} command was used to define $V$ and $\lambda$ as variables to be solved for and the eigenvalue solutions were calculated.        
 
 \subsection{Parameter study}
-Bending stiffness (EI) and torsional stiffness (GJ) were varied by $\pm$2.5\% increments up to 10\%. The percentage increment was used instead of adding a certain value to make the increase and decrease of the parameter value comparable between different models. 
-
-\subsection{Validation against existing studies}
-Calculation
-
-The results from the MATLAB script were then being compared to the results from literature. The main parameters of these wings were listed in table \ref{tab:data}. Other relevant parameters can be found in table \ref{tab:TandD-exp-wing-data} and table \ref{tab:Goland-wing-data}. The average error was calculated to be 10.54\%. This was satisfactory for the preliminary study.
+Bending stiffness (EI) and torsional stiffness (GJ) were varied by $\pm$2.5\% increments up to 10\%. The percentage increment was used instead of adding a certain value to make the increase and decrease of the parameter value comparable between different models. The important parameters are listed in table \ref{tab:data}
 \begin{table}[H]
     \centering
     \caption{Wing model parameters}
     \includestandalone{tables/parameters}
     \label{tab:data}
 \end{table}
-\begin{table}[H]
-    \centering
-    \caption{Benchmaking of results and their errors}
-    \includestandalone{tables/error}
-    \label{tab:error}
-\end{table}
+
+\subsection{Validation against existing studies}
+Results from the calculations done using the model created were then being compared against the existing results to validate and test the limitations of the model.
 
 %\textbf{VALIDATION}
 %\textbf{ADD ERROR TABLE}
@@ -436,10 +454,37 @@ The results from the MATLAB script were then being compared to the results from 
 %\cleardoublepage
 
 %%%%%%%%%% Preliminary Studies %%%%%%%%%%
-\section{Preliminary Studies - (3 page)}
+\section{Preliminary Studies}
 \label{sec:prelim}
-This section presents the results of this study as well as the conclusion drawn from the analysis. The model developed was used to analyse the flutter and divergence behaviour of NASA's SUGAR High with the parameter of EI and GJ varied. The flutter behaviour is shown in figure \ref{fig:SUGAR-flutt} and the divergence behaviour is shown in figure \ref{fig:SUGAR-div}.
+This section presents the results from this study as well as the conclusion drawn from the analysis. The results from the MATLAB script were compared to the results from literature. The main parameters of these wings were listed in table \ref{tab:data}. Other relevant parameters can be found in table \ref{tab:TandD-exp-wing-data} and table \ref{tab:Goland-wing-data}. The error for each model was shown in table \ref{tab:error}. The average error was calculated to be 10.54\%; this was satisfactory for the preliminary study.
+\vspace{-.5cm}
+\begin{table}[H]
+    \centering
+    \caption{Benchmaking of results and their errors}
+    \includestandalone{tables/error}
+    \label{tab:error}
+\end{table}
+
+The baseline model from Wright and Cooper \cite{Wright2015INTRODUCTIONLOADS} (WC) exhibited the smallest error of less than 1\%. This was expected as the method was demonstrated to be suitable for this wing in the literature. Other errors showed a trend of increasing with the increase in aspect ratio with the highest error percentage seen in the SUGAR High model - 16.84\%.\\
 %\textbf{WHY ARE YOU DOING IT}
+
+\iffalse
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{figures/SUGAR_flutt.png}
+    \caption{Flutter speed plot for the SUGAR High conceptual wing}
+    \label{fig:SUGAR-flutt}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{figures/SUGAR_div.png}
+    \caption{Divergence speed plot for the SUGAR High conceptual wing}
+    \label{fig:SUGAR-div}
+\end{figure}
+\fi
+%\iffalse
+\vspace{-.5cm}
 \begin{figure}[!hbt]
     \begin{minipage}{.5\textwidth}
     \centering
@@ -454,48 +499,27 @@ This section presents the results of this study as well as the conclusion drawn 
     \label{fig:SUGAR-div}
     \end{minipage}
 \end{figure}
-
-It can be seen in figure \ref{fig:SUGAR-flutt} that changes in bending stiffness (EI) has a greater impact to the flutter behaviour than the torsional stiffness (GJ). On the other hand, only GJ affects the divergence behaviour (figure \ref{fig:SUGAR-div}). This can be concluded as a result of how flutter depends on oscillations but divergence does not.
-
-\iffalse
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = .7\textwidth]{figures/SUGAR_flutter.png}
-    \caption{Flutter speed plot for the SUGAR High conceptual wing}
-    \label{fig:SUGAR-flutter}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = .7\textwidth]{figures/SUGAR_divergence.png}
-    \caption{Divergence speed plot for the SUGAR High conceptual wing}
-    \label{fig:SUGAR-divergence}
-\end{figure}
-\fi
-
+%\fi
 %\textbf{TRENDS}
 
 %\begin{itemize}
 %    \item Reasons for discrepancies - nonlinearity
 %\end{itemize}
-
-\begin{wrapfigure}[14]{l}{8.5cm}
+The result of the analysis of the flutter and divergence behaviour of NASA's SUGAR High with the parameter of EI and GJ varied are illustrated below. The flutter behaviour is shown in figure \ref{fig:SUGAR-flutt} and the divergence behaviour is shown in figure \ref{fig:SUGAR-div}.\\
+\vspace{-1cm}
+\begin{wrapfigure}[18]{l}{9cm}
     \centering
-    \includegraphics[width = 8.5cm]{figures/error-trend.png}
+    \includegraphics[width = 9cm]{figures/error-trend.png}
     \caption{Relationship of aspect ratio and the discrepancies of the results calculated.}
     \label{fig:error}
 \end{wrapfigure}
+\\ \\
+Figure \ref{fig:error} shows the error trend proposed as observed by comparing the results calculated from the model developed against the existing analytical results. These errors were shown individually for each model in table \ref{tab:error}. The discrepancies was concluded to be a result of nonlinearities which were not included in this model as the error from the computational model increases with respect to the increase in aspect ratio. This is because an increase in aspect ratio decreases the rigidity of the wing. Large wing tip deflection leads to aerodynamic forces acting not vertically to the wing.\\ \\ \\
 
-Figure \ref{fig:error} shows the error trend proposed as observed by comparing the results calculated from the model developed against the existing analytical results. These errors were shown in table \ref{tab:error} and the average error is 10.52\%. The discrepancies was thought to be a result of nonlinearities which were not included in this model. It can be seen that the error increases with respect to the increase in aspect ratio which backed the assumption of nonlinearities. This is because is in aspect ratio decreases the rigidity of the wing.
+The blue dashed line in figure \ref{fig:error} shows the error trend of the computational model. It can be seen that the trend increases with aspect ratio but the rate of increase decreases as the aspect ratio get higher. With this trend, the error might be limited at around 20\%. However, the model can be improved with the inclusion of nonlinearities to mitigate this discrepancies.
 
-\begin{table}[H]
-    \centering
-    \caption{Benchmaking of results and their errors}
-    \includestandalone{tables/error}
-    \label{tab:error}
-\end{table}
-
-\subsection{Initial Conclusions - (1/2 page)}
+\subsection{Initial Conclusions}
+\iffalse
 \begin{itemize}
     \item Flutter is affected by both
     \item Divergence is only affected by Torsional Stiffness
@@ -508,22 +532,25 @@ Figure \ref{fig:error} shows the error trend proposed as observed by comparing t
     \begin{itemize}
         \item sweep back - decrease torsion
     \end{itemize}
+    \item It can be seen in figure \ref{fig:SUGAR-flutt} that changes in bending stiffness (EI) has a greater impact to the flutter behaviour than the torsional stiffness (GJ). On the other hand, only GJ affects the divergence behaviour (figure \ref{fig:SUGAR-div}). This can be concluded as a result of how flutter depends on oscillations but divergence does not.\\
 \end{itemize}
+\fi
+It can be seen in figure \ref{fig:SUGAR-flutt} that changes in bending stiffness (EI) has a greater impact to the flutter behaviour than the torsional stiffness (GJ). On the other hand, only GJ affects the divergence behaviour (figure \ref{fig:SUGAR-div}). This can be concluded as a result of how flutter depends on oscillations but divergence does not. Therefore, to delay the onset of flutter, increasing EI can achieve this, while increasing GJ delays divergence. EI can be increased to opting for a stiffer material or adding strut to the wing configuration. GJ can be increased by sweeping back the wing. This decreases torsion on the wing.
 
 %%%%%%%%%% Initial Conclusions and Risk Management %%%%%%%%%%
-\section{Risk Management - (1/2 page)}
+\section{Risk Management}
 \label{sec:risk}
-Risk of model not working
-not getting parameter
-valiadste model again multiple case to make sure it works
-
+%Risk of model not working
+%not getting parameter
+%valiadste model again multiple case to make sure it works
 This project used a combination of computational and numerical methods. The risk in this study included the risk of not being able to produce a working MATLAB script. This risk was mitigated by using an existing MATLAB script \cite{Wright2015INTRODUCTIONLOADS} for flutter speed calculation as a starting point as this means that there was a backup script that can be modified to take in ranges of different parameters for calculation, in the case that a new script cannot be made to yield a satisfactory result.\\
 
-Moreover, one of the difficulties encountered in this project was obtaining information for parameters.
+Moreover, one of the difficulties encountered in this project was obtaining information for parameters. This was found to be a bigger challenge than expected as many studies do not document every parameters used in the models. Another risk was that a number of researches were done using imperial based unit and to make the results comparable, parameters need to be converted into SI units correctly. This risk was mitigated by rechecking the conversion to make sure there were no errors.
 
 %%%%%%%%%% Future Work %%%%%%%%%%
-\section{Future Work - (1/2 page)}
+\section{Future Work}
 \label{sec:future-work}
+\iffalse
 \begin{itemize}
     \item other parameters
     \item nonlinear
@@ -535,6 +562,10 @@ The model developed in this study containes many linear assumption which simplif
     \item Aerodynamic force was assumed to act vertically to the lifting surface which is not the case in most high AR wing.
     \item Limit cycle oscillation was not included in the study.
 \end{enumerate}
+\fi
+The errors and limitations in this model was mentioned in section \ref{sec:prelim}. This suggested a modification to a higher fidelity and a more complex model to be developed for future work. This includes the inclusion of nonlinearities, the inclusion of finite difference method, computational fluid dynamic analysis and a nonlinear finite element analysis. Existing toolbox such as UM/NAST and ONERO stall model can also be investigated. This method only assumed 2 mode shapes, more mode shapes can be included for a better analysis.\\
+
+Furthermore, other ranges of parameters such as mass per unit and second moment of area can be varied for parameter study of other properties. Another important aeroelastic behaviour - limit cycle oscillation should also be looked at in future works with the inclusion of nonlinearities as this behaviour is useful when occurs before flutter; it helps limit the fatality of flutter and limit the occurance of divergence.
 
 %%%%%%%%%% Project Work plan %%%%%%%%%%
 \section{Work Plan}
@@ -566,11 +597,11 @@ The model developed in this study containes many linear assumption which simplif
 \label{app:2D-para}
 \begin{figure}[H]
     \centering
-    \includegraphics[width = .9\textwidth]{figures/para.png}
+    \includegraphics[width =\textwidth]{figures/para.png}
     \caption{2D Illustration of the models}
     \label{fig:2D-wings}
 \end{figure}
-
+\iffalse
 \appendixname{ B}
 Determinant of the gathered aeroelastic equation
 \begin{equation}\label{eq:determinant}
@@ -584,10 +615,10 @@ Determinant of the gathered aeroelastic equation
     b_4\lambda^4+b_3\lambda^3+b_2\lambda^2+b_1\lambda+b_0 = 0
 \end{equation}
 where $b_n$, represented the constant for each term which also include the $V$ terms.
-
-\cleardoublepage
-\newpage
-\appendixname{ C}
+\fi
+%\cleardoublepage
+%\newpage
+%\appendixname{ C}
 \label{app:other-para}
 \begin{table}[H]
     \centering
@@ -601,8 +632,9 @@ where $b_n$, represented the constant for each term which also include the $V$ t
     \includestandalone{tables/WCandSH}
     \label{tab:Goland-wing-data}
 \end{table}
-
-\appendixname{ D}
+\cleardoublepage
+\newpage
+\appendixname{ C}
 \label{app:ei-gj}
 \begin{table}[H]
     \centering
@@ -610,9 +642,9 @@ where $b_n$, represented the constant for each term which also include the $V$ t
     \includestandalone{tables/EIGJ}
     \label{tab:ei-gj}
 \end{table}
-\cleardoublepage
-\newpage
-\appendixname{ E}
+%\cleardoublepage
+%\newpage
+\appendixname{ D}
 \label{app:other-wings}
 \begin{figure}[!hbt]
     \begin{minipage}{.5\textwidth}
@@ -642,7 +674,7 @@ where $b_n$, represented the constant for each term which also include the $V$ t
     \label{fig:TandD-div}
     \end{minipage}
 \end{figure}
-\begin{figure}[!hbt]
+\begin{figure}[H]
     \begin{minipage}{.5\textwidth}
     \centering
     \includegraphics[width = \textwidth]{figures/Goland_flutter.png}
